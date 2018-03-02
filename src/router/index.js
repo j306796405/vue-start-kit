@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+
+const _import_ = file => () => import('@/views/' + file + '.vue')
 
 Vue.use(Router)
 
@@ -8,8 +9,9 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: '首页',
+      component: _import_('Layout/index'),
+      redirect: '/home'
     }
   ]
 })
