@@ -1,34 +1,31 @@
 <template>
-  <div class="hello"></div>
+  <div class="app-wrapper">
+    <header></header>
+    <router-view class="main-container"></router-view>
+  </div>
 </template>
 
 <script>
+  import 'swiper/dist/css/swiper.css'
+  import { header } from './index'
+
   export default {
-    name: 'HelloWorld',
-    data () {
-      return {
-        msg: 'Welcome to Your Vue.js App'
-      }
+    name: 'layout',
+    components: {
+      header
     }
   }
 </script>
-
-<style scoped>
-  h1, h2 {
-    font-weight: normal;
+<style lang="less" scoped>
+  .app-wrapper {
+    width: 100%;
+    height: 100%;
   }
 
-  ul {
-    list-style-type: none;
-    padding: 0;
+  .main-container {
+    width: 100%;
+    height: e("calc(100% - 1rem)");
+    position: relative;
   }
 
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-
-  a {
-    color: #42b983;
-  }
 </style>
