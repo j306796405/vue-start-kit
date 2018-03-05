@@ -1,21 +1,23 @@
 <template>
   <div class="app-wrapper">
-    <header></header>
+    <AppHeader></AppHeader>
     <router-view class="main-container"></router-view>
+    <AppFooter></AppFooter>
   </div>
 </template>
 
 <script>
   import 'swiper/dist/css/swiper.css'
-  import { header } from './index'
+  import { AppHeader, AppFooter } from './index'
 
   export default {
-    name: 'layout',
     components: {
-      header
+      AppHeader,
+      AppFooter
     }
   }
 </script>
+
 <style lang="less" scoped>
   .app-wrapper {
     width: 100%;
@@ -27,5 +29,4 @@
     height: e("calc(100% - 1rem)");
     position: relative;
   }
-
 </style>

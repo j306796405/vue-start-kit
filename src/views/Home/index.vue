@@ -1,0 +1,70 @@
+<template>
+  <div>123123123</div>
+</template>
+<script>
+  import { swiper, swiperSlide } from 'vue-awesome-swiper'
+
+  export default {
+    components: {
+      swiper,
+      swiperSlide
+    },
+    created () {
+    }
+  }
+</script>
+<style lang="less" scoped>
+  .home-wrapper {
+    overflow-y: scroll;
+  }
+
+  .swiper-mask {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0.4rem;
+    background: #f4f4f4;
+    z-index: 9;
+  }
+
+  #swiper-container {
+    width: 100%;
+    height: e("calc(100% - 0.4rem)");
+    .swiper-box {
+      width: 100%;
+      height: 100%;
+      overflow-y: scroll;
+    }
+    .item {
+      padding: 0.2rem 0.1rem;
+      h4 {
+        color: @font-normal;
+      }
+      p {
+        font-size: 0.16rem;
+        line-height: 0.2rem;
+        margin: 0.1rem 0;
+      }
+      .small-box {
+        > * {
+          display: inline-block;
+          vertical-align: middle;
+          font-size: 0.1rem;
+          margin-right: 0.04rem;
+          color: #999;
+        }
+      }
+    }
+    .item-l {
+      width: 70%;
+      padding-right: 10px;
+    }
+    .item-r {
+      width: 30%;
+      img {
+        width: 100%;
+      }
+    }
+  }
+</style>

@@ -1,5 +1,5 @@
 // 顶部bar
-// export { default as footer } from './footerBar'
+export { default as AppFooter } from './AppFooter.vue'
 
 // 顶部搜索bar
-export {default as header} from './header'
+export {default as AppHeader} from './AppHeader.vue'
