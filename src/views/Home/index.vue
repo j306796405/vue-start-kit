@@ -1,13 +1,15 @@
 <template>
-  <div>123123123</div>
+  <TopBar></TopBar>
 </template>
 <script>
   import { swiper, swiperSlide } from 'vue-awesome-swiper'
+  import TopBar from './topBar/index.vue'
 
   export default {
     components: {
       swiper,
-      swiperSlide
+      swiperSlide,
+      TopBar
     },
     created () {
     }
