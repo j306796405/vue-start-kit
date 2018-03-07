@@ -33,6 +33,9 @@
         isTopBarBox: false
       }
     },
+    created(){
+      console.log(this.homeNewsIndex)
+    },
     methods: {
       async active (index) {
         this.$store.state.home.newsIndex = index
