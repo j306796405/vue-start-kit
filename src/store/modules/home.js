@@ -8,6 +8,7 @@ const home = {
     newsList: (function () {
       let newList = JSON.parse(Local.get('newList')) || newsList.slice(0, 12)
       newList.forEach(news => {
+        // ??? 为什么要删除title
         if (news.list) delete news.title
       })
       Local.set('newList', JSON.stringify(newList))
@@ -19,6 +20,7 @@ const home = {
     end: false
   },
   actions: {
+    // 获取列表数据
     getHomeList ({commit, state}, params) {
       const news = state.newsList.find((v) => v.id === params.id)
       if (news.list) return
@@ -38,13 +40,20 @@ const home = {
           reject(err)
         })
       })
-    }
+    },
   },
   mutations: {
+    //储存列表数据
     GET_HOME_LIST (state, list) {
-      // 此处存储两边 存疑
-      state.newsList[state.newsIndex].list = list
-      Vue.prototype.$set(state.newsList, state.newsIndex, state.newsList[state.newsIndex])
+      // 增加list属性
+      state.newsList[state.newsCurrIndex].list = list
+      // 因为新增属性 所以使用Vue.set方法
+      Vue.set(state.newsList, state.newsCurrIndex, state.newsList[state.newsCurrIndex])
+    },
+    UPDATE_NEWS_INDEX(state, currentIndex){
+      const prevIndex = state.newsCurrIndex
+      state.newsCurrIndex = currentIndex;
+      state.newsPrevIndex = prevIndex;
     }
   }
 }

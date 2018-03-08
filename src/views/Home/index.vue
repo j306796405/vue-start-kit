@@ -1,8 +1,64 @@
 <template>
-  <TopBar></TopBar>
+  <article class="home-wrapper">
+    <TopBar></TopBar>
+
+    <swiper ref="swiper-wrapper" id="swiper-container" @slideChangeTransitionEnd="end">
+      <swiper-slide v-for="(news, index) in newsList" :key="index">
+        <section class="swiper-box">
+          <ul>
+            <li v-for="item in news.list" class="item border-half-bottom" @click="skip($router, item.id)">
+              <div v-if="item.images.length === 0">
+                <h4>{{item.title}}</h4>
+                <p class="wes-3">{{item.intro}}</p>
+                <div class="df-sb">
+                  <div class="small-box">
+                    <span>{{item.source}}</span>
+                    <span>评论：{{item.comment}}</span>
+                    <span>{{item.time}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="df-sb" v-else-if="item.images.length === 1">
+                <div class="item-l">
+                  <h4>{{item.title}}</h4>
+                  <p class="wes-2">{{item.intro}}</p>
+                  <div class="df-sb">
+                    <div class="small-box">
+                      <span>{{item.source}}</span>
+                      <span>评论：{{item.comment}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="item-r">
+                  <img :src="item.images[0]" alt="">
+                </div>
+              </div>
+              <div v-else>
+                <div class="item-t">
+                  <h4>{{item.title}}</h4>
+                  <p class="wes-1">{{item.intro}}</p>
+                </div>
+                <div class="item-b df-sb">
+                  <img :src="img" :alt="img" :style="{width: item.images.length === 2 ? '40%':'25%'}" v-for="img in item.images">
+                </div>
+                <div class="df-sb">
+                  <div class="small-box">
+                    <span>{{item.source}}</span>
+                    <span>评论：{{item.comment}}</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <!--<NoneData v-if="news.list&&news.list.length>0"></NoneData>-->
+        </section>
+      </swiper-slide>
+    </swiper>
+  </article>
 </template>
 <script>
   import { swiper, swiperSlide } from 'vue-awesome-swiper'
+  import { mapGetters, mapMutations } from 'vuex'
   import TopBar from './topBar/index.vue'
 
   export default {
@@ -11,7 +67,33 @@
       swiperSlide,
       TopBar
     },
-    created () {
+    computed: {
+      ...mapGetters([
+        'newsList',
+        'homeNewsLoading',
+        'homeNewsCurrIndex',
+        'homeNewsPrevIndex',
+        'homeEnd'
+      ]),
+      ...mapMutations([
+        'UPDATE_NEWS_INDEX'
+      ]),
+      swiper () {
+        return this.$refs['swiper-wrapper'].swiper
+      },
+    },
+    methods: {
+      async end () {
+        this.UPDATE_NEWS_INDEX(this.swiper.activeIndex);
+        // this.$store.state.home.newsIndex = this.swiper.activeIndex
+        // this.$store.state.home.newsPrevIndex = this.swiper.previousIndex
+        // let data = await this.$store.dispatch('getHomeList', this.newsList[this.homeNewsIndex])
+      }
+    },
+    watch: {
+      homeNewsCurrIndex () {
+        // this.swiper.slideTo(this.homeNewsCurrIndex)
+      }
     }
   }
 </script>

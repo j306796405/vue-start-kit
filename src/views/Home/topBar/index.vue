@@ -2,21 +2,25 @@
   <div class="home-topbar-wrapper border-half-bottom">
     <div class="top-menu-bar">
       <swiper :options="swiperOption" ref="swiper-box">
-        <swiper-slide v-for="(news, index) in newsList" :class="{'active': homeNewsIndex === index}"
-                      @click.native="active(index)" :key="index">{{news.title}}
+        <swiper-slide v-for="(news, index) in newsList"
+                      :class="{'active': homeNewsCurrIndex === index}"
+                      @click.native="active(index)" :key="index">
+          {{news.title}}
         </swiper-slide>
       </swiper>
     </div>
-    <a class="top-menu-more-btn df-c" href="javascript:void(0)" @click="isTopBarBox=true"><i
-      class="list-shadow"></i><span class="cross"></span></a>
+    <a class="top-menu-more-btn df-c" href="javascript:void(0)" @click="isTopBarBox=true">
+      <i class="list-shadow"></i>
+      <span class="cross"></span>
+    </a>
 
     <!--<TopBarBox :class="{'top-bar-active-active': isTopBarBox}" @close="isTopBarBox=false"></TopBarBox>-->
 
   </div>
 </template>
 <script>
-  import {swiper, swiperSlide} from 'vue-awesome-swiper'
-  import {mapGetters} from 'vuex'
+  import { swiper, swiperSlide } from 'vue-awesome-swiper'
+  import { mapGetters, mapMutations, mapActions } from 'vuex'
   // import TopBarBox from 'components/TopBarBox'
 
   export default {
@@ -33,14 +37,18 @@
         isTopBarBox: false
       }
     },
-    created(){
-      console.log(this.homeNewsIndex)
-    },
     methods: {
       async active (index) {
-        this.$store.state.home.newsIndex = index
-        await this.$store.dispatch('getHomeList', this.newsList[this.homeNewsIndex])
-      }
+        this.UPDATE_NEWS_INDEX(index)
+        this.getHomeList(this.newsList[index])
+        // await this.$store.dispatch('getHomeList', this.newsList[this.homeNewsIndex])
+      },
+      ...mapMutations([
+        'UPDATE_NEWS_INDEX'
+      ]),
+      ...mapActions([
+        'getHomeList'
+      ])
     },
     computed: {
       swiper () {
@@ -48,13 +56,14 @@
       },
       ...mapGetters([
         'newsList',
-        'homeNewsIndex'
+        'homeNewsCurrIndex'
       ])
     }
   }
 </script>
 <style lang="less" scoped>
   @bar-color: #f4f5f6;
+
   .home-topbar-wrapper {
     height: 0.4rem;
     line-height: 0.4rem;
