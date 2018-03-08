@@ -8,3 +8,5 @@ const home = {
     end: false
   }
 }
+
+export default home
