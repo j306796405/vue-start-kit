@@ -12,7 +12,8 @@ axios.interceptors.request.use(config => {
 })
 
 // 响应时
-axios.interceptors.response.use(response => response, err => Promise.reject(err.response))
+axios.interceptors.response.use(response => response,
+  err => Promise.reject(err.response))
 
 // 检查状态码
 function checkStatus (res) {
@@ -67,4 +68,3 @@ export default {
     }).then(checkStatus).then(checkCode)
   }
 }
-

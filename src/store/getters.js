@@ -7,6 +7,6 @@ const getters = {
   homeNewsPrevIndex: state => state.home.newsPrevIndex,
   homeEnd: state => state.home.end,
   homeNewsLoading: state => state.home.newsLoading
-};
+}
 
 export default getters

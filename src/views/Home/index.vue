@@ -39,7 +39,8 @@
                   <p class="wes-1">{{item.intro}}</p>
                 </div>
                 <div class="item-b df-sb">
-                  <img :src="img" :alt="img" :style="{width: item.images.length === 2 ? '40%':'25%'}" v-for="img in item.images">
+                  <img :src="img" :alt="img" :style="{width: item.images.length === 2 ? '40%':'25%'}"
+                       v-for="img in item.images">
                 </div>
                 <div class="df-sb">
                   <div class="small-box">
@@ -80,11 +81,11 @@
       ]),
       swiper () {
         return this.$refs['swiper-wrapper'].swiper
-      },
+      }
     },
     methods: {
       async end () {
-        this.UPDATE_NEWS_INDEX(this.swiper.activeIndex);
+        this.UPDATE_NEWS_INDEX(this.swiper.activeIndex)
         // this.$store.state.home.newsIndex = this.swiper.activeIndex
         // this.$store.state.home.newsPrevIndex = this.swiper.previousIndex
         // let data = await this.$store.dispatch('getHomeList', this.newsList[this.homeNewsIndex])

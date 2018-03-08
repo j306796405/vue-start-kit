@@ -27,4 +27,4 @@ export const newsList = [
   {title: '养生', id: 19},
   {title: '故事', id: 20},
   {title: '美文', id: 21}
-];
+]

@@ -19,6 +19,7 @@
       top: 0;
     }
   }
+
   #view {
     position: absolute;
     left: 0;

@@ -27,33 +27,33 @@ const home = {
 
       state.newsLoading = true
       return new Promise((resolve, reject) => {
-        axios.get('home/list', params)
-          .then(res => {
-            state.newsLoading = false
-            // 不满11条说明，已经加载到最后一页
-            if (res.data.list.length < 11) {
-              state.end = true
-            }
-            commit('GET_HOME_LIST', res.data.list)
-            resolve(res.data.list)
-          }).catch(err => {
+        axios.get('home/list', params).then(res => {
+          state.newsLoading = false
+          // 不满11条说明，已经加载到最后一页
+          if (res.data.list.length < 11) {
+            state.end = true
+          }
+          commit('GET_HOME_LIST', res.data.list)
+          resolve(res.data.list)
+        }).catch(err => {
           reject(err)
         })
       })
-    },
+    }
   },
   mutations: {
-    //储存列表数据
+    // 储存列表数据
     GET_HOME_LIST (state, list) {
       // 增加list属性
       state.newsList[state.newsCurrIndex].list = list
       // 因为新增属性 所以使用Vue.set方法
-      Vue.set(state.newsList, state.newsCurrIndex, state.newsList[state.newsCurrIndex])
+      Vue.set(state.newsList, state.newsCurrIndex,
+        state.newsList[state.newsCurrIndex])
     },
-    UPDATE_NEWS_INDEX(state, currentIndex){
+    UPDATE_NEWS_INDEX (state, currentIndex) {
       const prevIndex = state.newsCurrIndex
-      state.newsCurrIndex = currentIndex;
-      state.newsPrevIndex = prevIndex;
+      state.newsCurrIndex = currentIndex
+      state.newsPrevIndex = prevIndex
     }
   }
 }

@@ -40,7 +40,8 @@
 
       .search-icon {
         position: absolute;
-        left: 0.06rem;top: 50%;
+        left: 0.06rem;
+        top: 50%;
         transform: translateY(-50%);
       }
 

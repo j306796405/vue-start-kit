@@ -1,6 +1,8 @@
 (function (win, doc) {
   const docEl = doc.documentElement
-  const resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize'
+  const resizeEvt = 'orientationchange' in window
+    ? 'orientationchange'
+    : 'resize'
   const refresh = function () {
     const w = docEl.clientWidth
 

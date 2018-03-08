@@ -166,7 +166,7 @@ select {
 button,
 html [type="button"],
 
-/* 1 */
+  /* 1 */
 
 [type="reset"],
 [type="submit"] {
@@ -244,7 +244,7 @@ textarea {
   -webkit-appearance: none;
 }
 
- ::-webkit-file-upload-button {
+::-webkit-file-upload-button {
   -webkit-appearance: button;
   /* 1 */
   font: inherit;
@@ -253,7 +253,7 @@ textarea {
 
 details,
 
-/* 1 */
+  /* 1 */
 
 menu {
   display: block;
@@ -274,7 +274,6 @@ template {
 [hidden] {
   display: none;
 }
-
 
 /* reset */
 
