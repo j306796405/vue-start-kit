@@ -16,6 +16,11 @@ export default new Router({
       children: [
         {path: 'home', component: _import_('Home/index'), name: '首页'}
       ]
+    },
+    {
+      path: '/article/:id',
+      name: '文章',
+      component: _import_('Article/index')
     }
   ]
 })

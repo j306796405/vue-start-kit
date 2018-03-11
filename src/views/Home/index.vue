@@ -51,7 +51,7 @@
               </div>
             </li>
           </ul>
-          <!--<NoneData v-if="news.list&&news.list.length>0"></NoneData>-->
+          <NoMoreData v-if="news.list && news.list.length > 0"></NoMoreData>
         </section>
       </swiper-slide>
     </swiper>
@@ -59,7 +59,7 @@
 </template>
 <script>
   import { swiper, swiperSlide } from 'vue-awesome-swiper'
-  import { mapGetters, mapMutations } from 'vuex'
+  import { mapGetters, mapMutations, mapActions } from 'vuex'
   import TopBar from './topBar/index.vue'
 
   export default {
@@ -76,24 +76,28 @@
         'homeNewsPrevIndex',
         'homeEnd'
       ]),
-      ...mapMutations([
-        'UPDATE_NEWS_INDEX'
-      ]),
       swiper () {
         return this.$refs['swiper-wrapper'].swiper
       }
     },
     methods: {
+      ...mapMutations([
+        'UPDATE_NEWS_INDEX'
+      ]),
       async end () {
-        this.UPDATE_NEWS_INDEX(this.swiper.activeIndex)
-        // this.$store.state.home.newsIndex = this.swiper.activeIndex
-        // this.$store.state.home.newsPrevIndex = this.swiper.previousIndex
-        // let data = await this.$store.dispatch('getHomeList', this.newsList[this.homeNewsIndex])
-      }
+        this.UPDATE_NEWS_INDEX(this.homeNewsCurrIndex)
+        await this.getHomeList(this.newsList[this.homeNewsCurrIndex])
+      },
+      ...mapActions([
+        'getHomeList'
+      ])
+    },
+    created () {
+      this.getHomeList(this.newsList[this.homeNewsCurrIndex])
     },
     watch: {
       homeNewsCurrIndex () {
-        // this.swiper.slideTo(this.homeNewsCurrIndex)
+        this.swiper.slideTo(this.homeNewsCurrIndex)
       }
     }
   }

@@ -1,19 +1,29 @@
 import axios from 'axios'
 import qs from 'qs'
+import { showLoading, hideLoading } from '@/components/DefaultLoading'
 
 axios.defaults.withCredentials = true
 
 // 发送时
 axios.interceptors.request.use(config => {
+  showLoading()
   // 开始
   return config
 }, err => {
+  hideLoading()
   return Promise.reject(err)
 })
 
 // 响应时
-axios.interceptors.response.use(response => response,
-  err => Promise.reject(err.response))
+axios.interceptors.response.use(
+  response => {
+    hideLoading()
+    return response
+  },
+  err => {
+    hideLoading()
+    return Promise.reject(err.response)
+  })
 
 // 检查状态码
 function checkStatus (res) {

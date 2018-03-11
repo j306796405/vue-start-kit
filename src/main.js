@@ -8,8 +8,13 @@ import './styles/index.css'
 import './styles/index.less'
 
 // 工具类
+import './utils/iconfont.js'
 import './utils/rem.js'
 import { Cookie } from './utils/storage'
+
+// 全局组件
+import components from '@/components/index'
+Vue.use(components)
 
 Vue.prototype.Cookie = Cookie
 
