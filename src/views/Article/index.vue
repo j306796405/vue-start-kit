@@ -41,7 +41,7 @@
     },
     methods: {
       more () {
-        // this.$alert('没有更多信息哦!')
+        this.$alert('没有更多信息哦!')
       },
       ...mapActions([
         'getArticle'

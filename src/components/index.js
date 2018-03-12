@@ -5,6 +5,7 @@ import IconSvg from './IconSvg'
 import CircleLoading from './CircleLoading/index.vue'
 import FullCircleLoading from './CircleLoading/full-loading.vue'
 import DefaultLoading from './DefaultLoading/index.vue'
+import Alert from './Dialog'
 
 import { showLoading, hideLoading } from './DefaultLoading/index.js'
 
@@ -19,6 +20,7 @@ const install = Vue => {
 
   Vue.prototype.$showLoading = showLoading
   Vue.prototype.$hideLoading = hideLoading
+  Vue.prototype.$alert = Alert
 }
 
 export default install
