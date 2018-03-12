@@ -13,8 +13,7 @@ const Alert = (option = {}) => {
   }
 
   return new Promise((resolve, reject) => {
-    initComponent.success = () => {
-      initComponent.show = false
+    initComponent.successCallback = () => {
       resolve()
     }
 

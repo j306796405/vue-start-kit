@@ -20,7 +20,14 @@
       }
     },
     methods: {
-      success () {}
+      success () {
+        this.closeDialog()
+        this.successCallback()
+      },
+      closeDialog () {
+        this.show = false
+      },
+      successCallback () {}
     }
   }
 </script>
