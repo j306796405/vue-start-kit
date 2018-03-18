@@ -69,13 +69,13 @@
     },
     methods: {
       loadingMore () {
-        this.getSearchList({keyword: this.keyword, pageIndex: this.searchKeyword + 1})
+        this.getSearchList({keyword: this.keyword, pageIndex: this.searchPageIndex + 1})
       },
       ...mapActions([
         'getSearchList'
       ]),
       clickSearchBtn (keyword) {
-        this.getSearchList({keyword, pageIndex: this.searchKeyword + 1})
+        this.getSearchList({keyword, pageIndex: 1})
       }
     },
     computed: {

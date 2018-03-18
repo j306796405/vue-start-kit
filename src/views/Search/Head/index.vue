@@ -3,7 +3,7 @@
     <div class="search-title df-sb border-half-bottom">
       <div class="search">
         <Icon name="2fangdajing" class="search-icon"></Icon>
-        <input type="text" placeholder="搜索些啥呢..." v-model="searchKeyword">
+        <input type="text" placeholder="搜索些啥呢..." v-model="searchKeyword" @change="toSearch">
       </div>
       <div class="close" @click="back($router)">取消</div>
     </div>
@@ -11,13 +11,26 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapActions } from 'vuex'
 
   export default {
     computed: {
-      ...mapGetters([
-        'searchKeyword'
-      ])
+      searchKeyword: {
+        get () {
+          return this.$store.state.search.keyword
+        },
+        set (newVlaue) {
+          this.$store.state.search.keyword = newVlaue
+        }
+      }
+    },
+    methods: {
+      ...mapActions([
+        'getSearchList'
+      ]),
+      toSearch () {
+        this.getSearchList({keyword: this.searchKeyword, pageIndex: 1})
+      }
     }
   }
 </script>
@@ -33,7 +46,8 @@
       color: @font-gray;
       .search-icon {
         position: absolute;
-        left: 0.06rem;top: 50%;
+        left: 0.06rem;
+        top: 50%;
         transform: translateY(-50%);
       }
       input {

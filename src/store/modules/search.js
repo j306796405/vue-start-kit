@@ -10,6 +10,7 @@ const common = {
   },
   actions: {
     getSearchList ({commit, state}, params = {}) {
+      if (!state.hasMore || state.isLoading) return
       state.isLoading = true
 
       return new Promise((resolve, reject) => {
