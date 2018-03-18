@@ -12,6 +12,9 @@ import './utils/iconfont.js'
 import './utils/rem.js'
 import { Cookie } from './utils/storage'
 
+// 指令
+import './directive'
+
 // 全局组件
 import components from '@/components/index'
 Vue.use(components)

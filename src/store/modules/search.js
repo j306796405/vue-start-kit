@@ -1,10 +1,10 @@
-import axios from 'src/utils/fetch'
+import axios from '@/utils/fetch'
 
 const common = {
   state: {
     keyword: '',
     pageIndex: 1,
-    list: null,
+    list: [],
     isLoading: false,
     hasMore: true
   },
@@ -21,6 +21,7 @@ const common = {
             state.hasMore = false
           }
 
+          commit('SET_SEARCH_PARAM', params)
           commit('GET_SEARCH_LIST', list)
         })
       })
@@ -29,6 +30,11 @@ const common = {
   mutations: {
     GET_SEARCH_LIST (state, list) {
       state.list = state.pageIndex === 1 ? list : state.list.concat(list)
+    },
+    SET_SEARCH_PARAM (state, search) {
+      const {keyword, pageIndex} = search
+      state.keyword = keyword
+      state.pageIndex = pageIndex
     }
   }
 }

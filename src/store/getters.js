@@ -9,7 +9,14 @@ const getters = {
   homeNewsLoading: state => state.home.newsLoading,
 
   // 详情页
-  detailArticle: state => state.article.articleInfo
+  detailArticle: state => state.article.articleInfo,
+
+  // 搜索页
+  searchKeyword: state => state.search.keyword,
+  searchPageIndex: state => state.search.pageIndex,
+  searchList: state => state.search.list,
+  searchIsLoading: state => state.search.isLoading,
+  searchHasMore: state => state.search.hasMore
 }
 
 export default getters

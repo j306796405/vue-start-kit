@@ -21,6 +21,11 @@ export default new Router({
       path: '/article/:id',
       name: '文章',
       component: _import_('Article/index')
+    },
+    {
+      path: '/search',
+      name: '搜索',
+      component: _import_('Search/index')
     }
   ]
 })
