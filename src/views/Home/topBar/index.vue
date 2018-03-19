@@ -41,7 +41,6 @@
       async active (index) {
         this.UPDATE_NEWS_INDEX(index)
         this.getHomeList(this.newsList[index])
-        // await this.$store.dispatch('getHomeList', this.newsList[this.homeNewsIndex])
       },
       ...mapMutations([
         'UPDATE_NEWS_INDEX'

@@ -1,10 +1,11 @@
 <template>
   <footer class="footer-wrapper df-c border-half-top">
     <ul class="cf">
-      <!--<router-link tag="li" :to="item.path" v-for="(item, index) in appFooterList"
+      <router-link tag="li" :to="item.path" v-for="(item, index) in appFooterList"
                    :class="{'active': ($route.matched[0].path || $route.matched[1].path) === item.path}" :key="index">
+        <Icon :name="item.icon"></Icon>
         <div>{{item.title}}</div>
-      </router-link>-->
+      </router-link>
     </ul>
   </footer>
 </template>

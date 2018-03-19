@@ -76,6 +76,9 @@
       ]),
       clickSearchBtn (keyword) {
         this.getSearchList({keyword, pageIndex: 1})
+      },
+      skip (id) {
+        this.$router.push('/article/' + id)
       }
     },
     computed: {
