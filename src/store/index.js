@@ -5,6 +5,8 @@ import user from '@/store/modules/user'
 import home from '@/store/modules/home'
 import article from '@/store/modules/article'
 import search from '@/store/modules/search'
+import video from '@/store/modules/video'
+import headline from '@/store/modules/headline'
 import getters from './getters'
 
 Vue.use(Vuex)
@@ -14,7 +16,9 @@ const store = new Vuex.Store({
     user,
     home,
     article,
-    search
+    search,
+    video,
+    headline
   },
   getters
 })

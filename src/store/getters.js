@@ -16,7 +16,17 @@ const getters = {
   searchPageIndex: state => state.search.pageIndex,
   searchList: state => state.search.list,
   searchIsLoading: state => state.search.isLoading,
-  searchHasMore: state => state.search.hasMore
+  searchHasMore: state => state.search.hasMore,
+
+  // 视频页
+  videoList: state => state.video.list,
+  videoIsLoading: state => state.video.isLoading,
+  videoHasMore: state => state.video.hasMore,
+
+  // headline
+  headlineList: state => state.headline.list,
+  isLoading: state => state.headline.isLoading,
+  hasMore: state => state.headline.hasMore
 }
 
 export default getters

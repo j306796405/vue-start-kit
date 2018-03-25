@@ -26,6 +26,11 @@ export default new Router({
       path: '/search',
       name: '搜索',
       component: _import_('Search/index')
+    },
+    {
+      path: '/video',
+      name: '视频',
+      component: _import_('Video/index')
     }
   ]
 })

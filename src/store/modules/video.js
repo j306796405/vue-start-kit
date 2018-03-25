@@ -1,4 +1,4 @@
-import axios from 'src/utils/fetch'
+import axios from '@/utils/fetch'
 
 const video = {
   state: {
@@ -6,7 +6,7 @@ const video = {
     isLoading: false,
     hasMore: true
   },
-  action: {
+  actions: {
     getVideoList ({commit, state}, params) {
       const {hasMore, isLoading} = state
 
@@ -22,11 +22,12 @@ const video = {
             state.hasMore = false
           }
 
-          commit('GET_VIDEO_LIST', res.list)
+          commit('GET_VIDEO_LIST', res.data.list)
           resolve(list)
         }).catch(err => {
-          state.isLoading = false
           reject(err)
+        }).finally(() => {
+          state.isLoading = false
         })
       })
     }
