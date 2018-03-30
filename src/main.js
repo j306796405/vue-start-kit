@@ -14,9 +14,12 @@ import { Cookie } from './utils/storage'
 
 // 指令
 import './directive'
+import '@/utils/FakePromise'
 
 // 全局组件
 import components from '@/components/index'
+import FakePromise from './utils/FakePromise'
+
 Vue.use(components)
 
 Vue.prototype.Cookie = Cookie
@@ -40,4 +43,14 @@ new Vue({
   store,
   components: {App},
   template: '<App/>'
+})
+
+new FakePromise((resolve, reject) => {
+  setTimeout(() => {
+    resolve(666)
+  })
+}).then((value) => {
+  console.log(`success: ${value}`)
+}, (reason) => {
+  console.log(`error: ${reason}`)
 })
